@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np 
 import re
 import random
+import spacy
 from spacy.tokenizer import Tokenizer
 from spacy.lang.en import English
 from spacy.lang.vi import Vietnamese
@@ -15,7 +16,7 @@ from torchtext.legacy import data
 # from torchtext.legacy.data import Field, TabularDataset, BucketIterator, Iterator, Dataset
 from torch.nn  import functional as F
 import torch.optim as  optim 
-import spacy
+
 if torch.cuda.is_available():  
     dev = "cuda:0" 
 
@@ -23,7 +24,7 @@ if torch.cuda.is_available():
 else:  
     dev = "cpu"  
 device = torch.device(dev)
-# spacy_en = spacy.load("en_core_web_sm")
+spacy_en = spacy.load("en_core_web_sm")
 SEED = 32
 
 enNLP = English()
