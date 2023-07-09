@@ -1,6 +1,8 @@
 # Import library
 import subprocess
-subprocess.check_call('pip','install','spacy')
+list_lib = ['spacy','re','iteration_utilities','nltk']
+for x in list_lib:
+    subprocess.check_call('pip','install',x)
 import pandas as pd
 import numpy as np 
 import re
