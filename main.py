@@ -147,25 +147,28 @@ def translate(model,sentence,srcField,targetField,srcTokenizer):
 #     return wrapper
 
 # @run_once
-def build():
+# def build():
 
-    raw_data = create_raw_dataset()
-    df = pd.DataFrame(raw_data)
+#     raw_data = create_raw_dataset()
+#     df = pd.DataFrame(raw_data)
 
-    SRC = data.Field(tokenize=myTokenizerEN,batch_first=False,init_token="<sos>",eos_token="<eos>")
-    TARGET = data.Field(tokenize=myTokenizerVI,batch_first=False,tokenizer_language="vi",init_token="<sos>",eos_token="<eos>")        
-    torchdataset = DataFrameDataset(df,SRC,TARGET)
+#     SRC = data.Field(tokenize=myTokenizerEN,batch_first=False,init_token="<sos>",eos_token="<eos>")
+#     TARGET = data.Field(tokenize=myTokenizerVI,batch_first=False,tokenizer_language="vi",init_token="<sos>",eos_token="<eos>")        
+#     torchdataset = DataFrameDataset(df,SRC,TARGET)
 
-    train_data, valid_data = torchdataset.split(split_ratio=0.8, random_state = random.seed(SEED))
-    SRC.build_vocab(train_data,min_freq=2)
-    TARGET.build_vocab(train_data,min_freq=2)  
-    return SRC, TARGET
+#     train_data, valid_data = torchdataset.split(split_ratio=0.8, random_state = random.seed(SEED))
+#     SRC.build_vocab(train_data,min_freq=2)
+#     TARGET.build_vocab(train_data,min_freq=2)  
+#     return SRC, TARGET
     
 
-# import streamlit as st
+import streamlit as st
 
 # def train_en_vi(SRC, TARGET):
-#     model = torch.load('translate_en_vi.pt')
-#     eng_sentence = st.text_input(label='Your English sentence:', placeholder='Type here')
-#     vi_sentence = translate(model,eng_sentence ,SRC,TARGET,myTokenizerEN)
-#     st.write('Vietnamese sentence: ', vi_sentence)
+
+src = torch.load('source.pt')
+tar = torch.load('target.pt')
+model = torch.load('translate_en_vi.pt')
+eng_sentence = st.text_input(label='Your English sentence:', placeholder='Type here')
+vi_sentence = translate(model,eng_sentence ,src,tar,myTokenizerEN)
+st.write('Vietnamese sentence: ', vi_sentence)
