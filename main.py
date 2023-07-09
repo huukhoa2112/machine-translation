@@ -174,6 +174,7 @@ import streamlit as st
 src = torch.load('source.pt')
 tar = torch.load('target.pt')
 model = torch.load('translate_en_vi.pt')
+st.write('Not use special chars and punctuation !!!')
 eng_sentence = st.text_input(label='Your English sentence:', placeholder='Type here')
 vi_sentence = translate(model,eng_sentence ,src,tar,myTokenizerEN)
 st.write('Vietnamese sentence: ', vi_sentence)
