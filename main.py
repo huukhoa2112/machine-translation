@@ -1,9 +1,9 @@
 # Import library
-import subprocess
-import sys
-list_lib = ['spacy','re','iteration_utilities','nltk','pandas','numpy']
-for x in list_lib:
-    subprocess.check_call([sys.executable, '-m', 'pip3', 'install', x])
+# import subprocess
+# import sys
+# list_lib = ['spacy','re','iteration_utilities','nltk','pandas','numpy']
+# for x in list_lib:
+#     subprocess.check_call([sys.executable, '-m', 'pip3', 'install', x])
 import pandas as pd
 import numpy as np 
 import re
@@ -12,7 +12,7 @@ import spacy
 from spacy.tokenizer import Tokenizer
 from spacy.lang.en import English
 from spacy.lang.vi import Vietnamese
-from iteration_utilities import deepflatten
+# from iteration_utilities import deepflatten
 from nltk.translate.bleu_score import sentence_bleu
 from torch import nn
 import torch
