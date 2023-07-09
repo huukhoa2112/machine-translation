@@ -4,4 +4,4 @@ nltk
 spacy
 torchtext==0.9.0
 torch==1.8.0
-re
+regex
