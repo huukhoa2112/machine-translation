@@ -29,7 +29,7 @@ if torch.cuda.is_available():
 else:  
     dev = "cpu"  
 device = torch.device(dev)
-spacy_en = spacy.load("en_core_web_sm")
+# spacy_en = spacy.load("en_core_web_sm")
 SEED = 32
 
 enNLP = English()
